@@ -1,33 +1,33 @@
 import React from "react";
-import { People } from "../types";
+import { Starships } from "../types";
 import storage from "src/utils/storage";
 import { useNavigate } from "react-router-dom";
-import { useGetWikiPeople } from "../services";
+import { useGetWikiStarships } from "../services";
 
-export type UseWikiPeopleReturn = {
+export type UseWikiStarshipsReturn = {
   isLoading: boolean;
-  people: People[] | undefined;
-  peopleError: unknown;
+  starships: Starships[] | undefined;
+  starshipsError: unknown;
   page: number;
-  handleSelectPerson: (personId: string) => void;
+  handleSelect: (personId: string) => void;
   handleNextPage: () => void;
   handlePreviousPage: () => void;
 };
 
-const useWikiPeople = (): UseWikiPeopleReturn => {
+const useWikiStarships = (): UseWikiStarshipsReturn => {
   const navigate = useNavigate();
   const [page, setCurrentPage] = React.useState(
     storage.session.read("page") || 1
   );
   const {
     isLoading,
-    data: people,
-    error: peopleError,
-  } = useGetWikiPeople({ page });
+    data: starships,
+    error: starshipsError,
+  } = useGetWikiStarships({ page });
 
-  const handleSelectPerson = React.useCallback(
-    (personId: string) => {
-      navigate(`profile/people/${personId}`);
+  const handleSelect = React.useCallback(
+    (id: string) => {
+      navigate(`profile/starships/${id}`);
     },
     [navigate]
   );
@@ -63,13 +63,13 @@ const useWikiPeople = (): UseWikiPeopleReturn => {
 
   return {
     isLoading,
-    people,
-    peopleError,
+    starships,
+    starshipsError,
     page,
-    handleSelectPerson,
+    handleSelect,
     handlePreviousPage,
     handleNextPage,
   };
 };
 
-export default useWikiPeople;
+export default useWikiStarships;

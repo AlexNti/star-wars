@@ -1,33 +1,33 @@
 import React from "react";
-import { People } from "../types";
+import { Planets } from "../types";
 import storage from "src/utils/storage";
 import { useNavigate } from "react-router-dom";
-import { useGetWikiPeople } from "../services";
+import { useGetWikiPlanets } from "../services";
 
-export type UseWikiPeopleReturn = {
+export type UseWikiPlanetsReturn = {
   isLoading: boolean;
-  people: People[] | undefined;
-  peopleError: unknown;
+  planets: Planets[] | undefined;
+  planetsError: unknown;
   page: number;
-  handleSelectPerson: (personId: string) => void;
+  handleSelect: (id: string) => void;
   handleNextPage: () => void;
   handlePreviousPage: () => void;
 };
 
-const useWikiPeople = (): UseWikiPeopleReturn => {
+const useWikiPlanets = (): UseWikiPlanetsReturn => {
   const navigate = useNavigate();
   const [page, setCurrentPage] = React.useState(
     storage.session.read("page") || 1
   );
   const {
     isLoading,
-    data: people,
-    error: peopleError,
-  } = useGetWikiPeople({ page });
+    data: planets,
+    error: planetsError,
+  } = useGetWikiPlanets({ page });
 
-  const handleSelectPerson = React.useCallback(
-    (personId: string) => {
-      navigate(`profile/people/${personId}`);
+  const handleSelect = React.useCallback(
+    (id: string) => {
+      navigate(`profile/planets/${id}`);
     },
     [navigate]
   );
@@ -63,13 +63,13 @@ const useWikiPeople = (): UseWikiPeopleReturn => {
 
   return {
     isLoading,
-    people,
-    peopleError,
+    planets,
+    planetsError,
     page,
-    handleSelectPerson,
+    handleSelect,
     handlePreviousPage,
     handleNextPage,
   };
 };
 
-export default useWikiPeople;
+export default useWikiPlanets;
