@@ -7,7 +7,13 @@ import { ColorModeSwitcher } from "src/ColorModeSwitcher";
 
 import { ErrorBoundary } from "src/components";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+    },
+  },
+});
 
 export const App = (): JSX.Element => {
   return (

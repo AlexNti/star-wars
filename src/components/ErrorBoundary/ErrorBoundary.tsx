@@ -1,15 +1,19 @@
-import React from 'react';
-import { Flex, Text } from '@chakra-ui/react';
+import React from "react";
+import { Flex, Text } from "@chakra-ui/react";
 
 interface ErrorBoundaryProps {
-  fallbackStrategy?: 'passthrough' | 'invisible' | 'placeholder';
+  fallbackStrategy?: "passthrough" | "invisible" | "placeholder";
+  children?: React.ReactNode;
 }
 
 interface ErrorBoundaryState {
   hasError: boolean;
 }
 
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundary extends React.Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   static defaultProps: Partial<ErrorBoundaryProps>;
 
   state = { hasError: false };
@@ -28,9 +32,9 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     }
 
     switch (fallbackStrategy) {
-      case 'invisible':
+      case "invisible":
         return null;
-      case 'placeholder':
+      case "placeholder":
         return (
           <Flex align="center" justify="center" width="100%" height="100%">
             <Text py={5} px={4}>
@@ -38,7 +42,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
             </Text>
           </Flex>
         );
-      case 'passthrough':
+      case "passthrough":
       default:
         return children;
     }
@@ -46,7 +50,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 }
 
 ErrorBoundary.defaultProps = {
-  fallbackStrategy: 'placeholder'
+  fallbackStrategy: "placeholder",
 };
 
 export default ErrorBoundary;
