@@ -5,8 +5,21 @@ import { Flex, Spinner } from "@chakra-ui/react";
 
 import { Alert } from "src/components";
 import { Table } from "./components";
+import { Outlet, Link } from "react-router-dom";
+
+import { Tabs, TabList, Tab } from "@chakra-ui/react";
 
 const PesonKeys = ["name"];
+
+// const PeopleTab = ({ people, handleSelectPerson }) => {
+//   return (
+//     <Table
+//       data={people || []}
+//       tableKeys={PesonKeys}
+//       handleSelection={handleSelectPerson}
+//     ></Table>
+//   );
+// };
 
 const WikiList = () => {
   const { people, isLoading, peopleError, handleSelectPerson } =
@@ -29,19 +42,30 @@ const WikiList = () => {
   }
 
   return (
-    <Flex
-      alignItems="center"
-      flexDirection="column"
-      w="100%"
-      p={4}
-      color="white"
-    >
-      <Table
-        data={people || []}
-        tableKeys={PesonKeys}
-        handleSelection={handleSelectPerson}
-      ></Table>
-    </Flex>
+    <>
+      <Tabs>
+        <TabList>
+          <Tab>
+            <Link to="people">People</Link>
+          </Tab>
+          <Tab>
+            <Link to="starships">Starships</Link>
+          </Tab>
+          <Tab>
+            <Link to="planets">Planets</Link>
+          </Tab>
+        </TabList>
+      </Tabs>
+      <Flex
+        alignItems="center"
+        flexDirection="column"
+        w="100%"
+        p={4}
+        color="white"
+      >
+        <Outlet />
+      </Flex>
+    </>
   );
 };
 
