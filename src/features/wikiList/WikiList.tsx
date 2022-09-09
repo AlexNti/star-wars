@@ -6,6 +6,8 @@ import { Flex, Spinner } from "@chakra-ui/react";
 import { Alert } from "src/components";
 import { Table } from "./components";
 
+const PesonKeys = ["name"];
+
 const WikiList = () => {
   const { people, isLoading, peopleError, handleSelectPerson } =
     useWikiPeople();
@@ -35,8 +37,9 @@ const WikiList = () => {
       color="white"
     >
       <Table
-        people={people || []}
-        handleSelectPerson={handleSelectPerson}
+        data={people || []}
+        tableKeys={PesonKeys}
+        handleSelection={handleSelectPerson}
       ></Table>
     </Flex>
   );

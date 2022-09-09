@@ -1,33 +1,37 @@
 import React from "react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
-import { People } from "src/features/wikiList/types";
 
-type PersonTableProps = {
-  people: People[];
-  handleSelectPerson: (personId: string) => void;
+type TableProps<T extends { id: string; [key: string]: any }[]> = {
+  data: T;
+  handleSelection: (id: string) => void;
+  tableKeys: string[];
 };
 
-const PesonKeys = ["name"];
-
-const WikiPeopleTable = ({
-  people,
-  handleSelectPerson,
-}: PersonTableProps): JSX.Element => {
+const WikiTable = <T extends { id: string; [key: string]: any }[]>({
+  data,
+  handleSelection,
+  tableKeys,
+}: TableProps<T>): JSX.Element => {
   return (
     <Table size="md">
       <Thead>
         <Tr>
-          {PesonKeys.map((personKey) => (
-            <Th key={personKey} color="gray.400">
-              {personKey}
+          {tableKeys.map((key) => (
+            <Th key={key} color="gray.400">
+              {key}
             </Th>
           ))}
         </Tr>
       </Thead>
       <Tbody>
-        {people.map((person) => (
-          <Tr onClick={() => handleSelectPerson(person.id)} key={person.id}>
-            <Td>{person.name}</Td>
+        {data.map((currentData) => (
+          <Tr
+            onClick={() => handleSelection(currentData.id)}
+            key={currentData.id}
+          >
+            {tableKeys.map((key) => {
+              return <Td key={key}>{currentData[key]}</Td>;
+            })}
           </Tr>
         ))}
       </Tbody>
@@ -35,4 +39,4 @@ const WikiPeopleTable = ({
   );
 };
 
-export default WikiPeopleTable;
+export default WikiTable;
