@@ -5,9 +5,9 @@ import { Flex, Box } from "@chakra-ui/react";
 import { Outlet, Link } from "react-router-dom";
 
 import { Tabs, TabList, Tab } from "@chakra-ui/react";
-import { wikiTabs } from "src/features/wikiList/constants";
+import { wikiTabs } from "src/features/wiki/constants";
 
-const WikiList = () => {
+const Wiki = () => {
   const tabs = wikiTabs();
 
   const keyTabs = Object.keys(tabs);
@@ -42,4 +42,4 @@ const WikiList = () => {
   );
 };
 
-export default WikiList;
+export default Wiki;

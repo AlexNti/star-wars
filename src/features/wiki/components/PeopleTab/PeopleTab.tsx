@@ -1,9 +1,9 @@
 import React from "react";
 import { Flex, Spinner } from "@chakra-ui/react";
 import { Alert } from "src/components";
-import { Table } from "src/features/wikiList/components";
+import { Table } from "src/features/wiki/components";
 
-import { useWikiPeople } from "src/features/wikiList/hooks";
+import { useWikiPeople } from "src/features/wiki/hooks";
 
 const PeopleKeys = ["name"];
 

@@ -2,8 +2,8 @@ import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Layout } from "src/components";
 
-import { WikiList } from "src/features/wikiList";
-import { WikiPage } from "src/features/wikiList/components";
+import { Wiki } from "src/features/wiki";
+import { WikiPage } from "src/features/wiki/components";
 
 import { NotFound404 } from "src/components";
 
@@ -11,7 +11,7 @@ const AppRoutes = (): JSX.Element => {
   return (
     <Layout>
       <Routes>
-        <Route path="/wiki" element={<WikiList />}>
+        <Route path="/wiki" element={<Wiki />}>
           <Route path=":id" element={<WikiPage />} />
 
           {/* Initialize the router to navigate to people screeen by default */}

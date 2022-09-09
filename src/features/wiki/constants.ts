@@ -1,5 +1,5 @@
-import { PeopleTab } from "src/features/wikiList/components/PeopleTab";
-import { WikiTabs } from "src/features/wikiList/types";
+import { PeopleTab } from "src/features/wiki/components/PeopleTab";
+import { WikiTabs } from "src/features/wiki/types";
 
 export const wikiTabs = (): WikiTabs => ({
   people: {
