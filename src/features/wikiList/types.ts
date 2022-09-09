@@ -18,3 +18,12 @@ export type People = {
   url: string;
   id: string;
 };
+
+export type WikiTabs = {
+  [key: string]: {
+    to: string;
+    label: string;
+    id: string;
+    Component: () => JSX.Element;
+  };
+};

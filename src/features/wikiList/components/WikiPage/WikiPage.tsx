@@ -1,10 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-
+import { wikiTabs } from "src/features/wikiList/constants";
 const WikiPage = () => {
-  let { id } = useParams();
+  let { id = "default" } = useParams();
+  const { Component } = wikiTabs()[id];
 
-  return <div>Here is wiki page for {id}</div>;
+  return <Component />;
 };
 
 export default WikiPage;

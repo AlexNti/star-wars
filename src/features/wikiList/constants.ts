@@ -1,10 +1,23 @@
-export const wikiTabs = {
-  people: { to: "people", label: "People", id: "people", index: 1 },
+import { PeopleTab } from "src/features/wikiList/components/PeopleTab";
+import { WikiTabs } from "src/features/wikiList/types";
+
+export const wikiTabs = (): WikiTabs => ({
+  people: {
+    to: "people",
+    label: "People",
+    id: "people",
+    Component: PeopleTab,
+  },
   starships: {
     to: "starships",
     label: "Star Ships",
     id: "starships",
-    index: 2,
+    Component: PeopleTab,
   },
-  planets: { to: "planets", label: "Planets", id: "planets", index: 3 },
-};
+  planets: {
+    to: "planets",
+    label: "Planets",
+    id: "Planets",
+    Component: PeopleTab,
+  },
+});
