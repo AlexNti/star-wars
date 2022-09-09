@@ -3,13 +3,13 @@ import { Flex, Spinner } from "@chakra-ui/react";
 import { Alert } from "src/components";
 import { Table } from "src/features/wiki/components";
 
-import { useWikiPeople } from "src/features/wiki/hooks";
+import { useWikiStarships } from "src/features/wiki/hooks";
 
 const tableKeys = ["name"];
 
-const PeopleTab = () => {
-  const { people, isLoading, peopleError, handleSelectPerson } =
-    useWikiPeople();
+const StarsipTab = () => {
+  const { starships, isLoading, starshipsError, handleSelect } =
+    useWikiStarships();
 
   if (isLoading)
     return (
@@ -18,7 +18,7 @@ const PeopleTab = () => {
       </Flex>
     );
 
-  if (peopleError) {
+  if (starshipsError) {
     return (
       <Alert
         title="Error At fetching Coins Market"
@@ -28,11 +28,11 @@ const PeopleTab = () => {
   }
   return (
     <Table
-      data={people || []}
+      data={starships || []}
       tableKeys={tableKeys}
-      handleSelection={handleSelectPerson}
+      handleSelection={handleSelect}
     ></Table>
   );
 };
 
-export default PeopleTab;
+export default StarsipTab;
