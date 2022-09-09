@@ -13,9 +13,15 @@ const makeWikiAPI = ({ httpService }: MakeApi): WikiApi => {
     const response = await httpService.GET(`${APIPaths.PEOPLE}`, null, {
       "Content-Type": "application/json",
     });
-    const data = response.data as People[];
+    const data = response.data.results as Omit<People, "id">[];
 
-    return data;
+    const peopleWithId = data.map(({ url, ...rest }) => {
+      const splitedUrl = url.split("/").filter(Boolean);
+      const id = splitedUrl[splitedUrl.length - 1];
+      return { ...rest, id };
+    });
+
+    return peopleWithId as People[];
   };
 
   return { getWikiPeople };
