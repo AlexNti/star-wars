@@ -5,17 +5,25 @@ import { Flex, Box } from "@chakra-ui/react";
 import { Outlet, Link } from "react-router-dom";
 
 import { Tabs, TabList, Tab } from "@chakra-ui/react";
-import { wikiTabs } from "src/features/wiki/constants";
+import { wikiTabs, WikiTabs } from "src/features/wiki/constants";
+import { useParams } from "react-router-dom";
+
+const getActiveTab = (tabs: WikiTabs, currentTabId: string): number => {
+  const currentActiveTabIndex = tabs[currentTabId].index;
+
+  return currentActiveTabIndex || 0;
+};
 
 const Wiki = () => {
   const tabs = wikiTabs();
+  let { id = "" } = useParams();
 
   const keyTabs = Object.keys(tabs);
 
   return (
     <Flex flexDirection="column">
       <Box pl={2}>
-        <Tabs>
+        <Tabs index={getActiveTab(tabs, id)}>
           <TabList>
             {keyTabs.map((keyTab) => {
               const { id, to, label } = tabs[keyTab];

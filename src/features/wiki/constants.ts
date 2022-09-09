@@ -3,7 +3,16 @@ import {
   StarshipTab,
   PlanetsTab,
 } from "src/features/wiki/components";
-import { WikiTabs } from "src/features/wiki/types";
+
+export type WikiTabs = {
+  [key: string]: {
+    to: string;
+    label: string;
+    id: string;
+    index: number;
+    Component: () => JSX.Element;
+  };
+};
 
 export const wikiTabs = (): WikiTabs => ({
   people: {
@@ -11,17 +20,20 @@ export const wikiTabs = (): WikiTabs => ({
     label: "People",
     id: "people",
     Component: PeopleTab,
+    index: 0,
   },
   starships: {
     to: "starships",
     label: "Star Ships",
     id: "starships",
     Component: StarshipTab,
+    index: 1,
   },
   planets: {
     to: "planets",
     label: "Planets",
     id: "Planets",
     Component: PlanetsTab,
+    index: 2,
   },
 });
