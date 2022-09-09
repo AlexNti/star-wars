@@ -1,13 +1,13 @@
 import React from "react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 
-type TableProps<T extends { id: string; [key: string]: any }[]> = {
-  data: T;
+type TableProps<T extends { id: string; [key: string]: any }> = {
+  data: T[];
   handleSelection: (id: string) => void;
   tableKeys: string[];
 };
 
-const WikiTable = <T extends { id: string; [key: string]: any }[]>({
+const WikiTable = <T extends { id: string; [key: string]: any }>({
   data,
   handleSelection,
   tableKeys,
