@@ -1,4 +1,8 @@
-import { PeopleTab, StarshipTab } from "src/features/wiki/components";
+import {
+  PeopleTab,
+  StarshipTab,
+  PlanetsTab,
+} from "src/features/wiki/components";
 import { WikiTabs } from "src/features/wiki/types";
 
 export const wikiTabs = (): WikiTabs => ({
@@ -18,6 +22,6 @@ export const wikiTabs = (): WikiTabs => ({
     to: "planets",
     label: "Planets",
     id: "Planets",
-    Component: PeopleTab,
+    Component: PlanetsTab,
   },
 });
