@@ -27,7 +27,7 @@ const useWikiPeople = (): UseWikiPeopleReturn => {
 
   const handleSelectPerson = React.useCallback(
     (personId: string) => {
-      navigate(`profile/people/${personId}`);
+      navigate(`${personId}`);
     },
     [navigate]
   );

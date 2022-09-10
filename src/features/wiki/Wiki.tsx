@@ -9,6 +9,7 @@ import { wikiTabs, WikiTabs } from "src/features/wiki/constants";
 import { useParams } from "react-router-dom";
 
 const getActiveTab = (tabs: WikiTabs, currentTabId: string): number => {
+  if (!currentTabId) return 0;
   const currentActiveTabIndex = tabs[currentTabId].index;
 
   return currentActiveTabIndex || 0;
@@ -16,17 +17,18 @@ const getActiveTab = (tabs: WikiTabs, currentTabId: string): number => {
 
 const Wiki = () => {
   const tabs = wikiTabs();
-  let { id = "" } = useParams();
+  const { itemId = "" } = useParams();
 
   const keyTabs = Object.keys(tabs);
 
   return (
     <Flex flexDirection="column">
       <Box pl={2}>
-        <Tabs index={getActiveTab(tabs, id)}>
+        <Tabs index={getActiveTab(tabs, itemId)}>
           <TabList>
             {keyTabs.map((keyTab) => {
-              const { id, to, label } = tabs[keyTab];
+              const { id, to, label, enabled } = tabs[keyTab];
+              if (!enabled) return null;
               return (
                 <Tab key={id}>
                   <Link to={to}>{label}</Link>
@@ -43,6 +45,7 @@ const Wiki = () => {
         flexDirection="column"
         w="100%"
         color="white"
+        height="100%"
       >
         <Outlet />
       </Flex>

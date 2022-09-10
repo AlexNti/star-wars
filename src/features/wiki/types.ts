@@ -53,4 +53,5 @@ export type People = {
   homeworld: string;
   url: string;
   id: string;
+  starships: string;
 };

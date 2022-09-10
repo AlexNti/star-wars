@@ -27,7 +27,7 @@ const useWikiPlanets = (): UseWikiPlanetsReturn => {
 
   const handleSelect = React.useCallback(
     (id: string) => {
-      navigate(`profile/planets/${id}`);
+      navigate(`${id}`);
     },
     [navigate]
   );

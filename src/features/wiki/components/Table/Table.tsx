@@ -1,6 +1,6 @@
 import React from "react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
-
+//TODO ADD HOVER
 type TableProps<T extends { id: string; [key: string]: any }> = {
   data: T[];
   handleSelection: (id: string) => void;

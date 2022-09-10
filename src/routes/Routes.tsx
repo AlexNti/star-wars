@@ -5,6 +5,8 @@ import { Layout } from "src/components";
 import { Wiki } from "src/features/wiki";
 import { WikiPage } from "src/features/wiki/components";
 
+import { Profile } from "src/features/profile";
+
 import { NotFound404 } from "src/components";
 
 const AppRoutes = (): JSX.Element => {
@@ -12,7 +14,8 @@ const AppRoutes = (): JSX.Element => {
     <Layout>
       <Routes>
         <Route path="/wiki" element={<Wiki />}>
-          <Route path=":id" element={<WikiPage />} />
+          <Route path=":itemId" element={<WikiPage />} />
+          <Route path=":itemId/:profileId" element={<Profile />} />
 
           {/* Initialize the router to navigate to people screeen by default */}
           <Route index element={<Navigate to="people" />} />

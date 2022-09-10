@@ -11,6 +11,7 @@ export type WikiTabs = {
     id: string;
     index: number;
     Component: () => JSX.Element;
+    enabled: boolean;
   };
 };
 
@@ -21,6 +22,7 @@ export const wikiTabs = (): WikiTabs => ({
     id: "people",
     Component: PeopleTab,
     index: 0,
+    enabled: true,
   },
   starships: {
     to: "starships",
@@ -28,6 +30,7 @@ export const wikiTabs = (): WikiTabs => ({
     id: "starships",
     Component: StarshipTab,
     index: 1,
+    enabled: false,
   },
   planets: {
     to: "planets",
@@ -35,5 +38,6 @@ export const wikiTabs = (): WikiTabs => ({
     id: "Planets",
     Component: PlanetsTab,
     index: 2,
+    enabled: false,
   },
 });

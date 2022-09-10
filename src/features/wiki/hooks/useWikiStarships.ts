@@ -27,7 +27,7 @@ const useWikiStarships = (): UseWikiStarshipsReturn => {
 
   const handleSelect = React.useCallback(
     (id: string) => {
-      navigate(`profile/starships/${id}`);
+      navigate(`${id}`);
     },
     [navigate]
   );
