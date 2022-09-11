@@ -8,3 +8,5 @@ Thisngs to improve
 - Build a mechanism for the profile to first check the QUERIES get all result
 - We can try to generalize the errors and loading states.
 - keep the state of accordion when navigating fron and back in the page.
+- Use context at favourites can lead to perfomance issue when app is scaling, for now it just fine but we have to consider optimazing or changing the way we manage the local state.
+-

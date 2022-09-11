@@ -54,4 +54,5 @@ export type People = {
   url: string;
   id: string;
   starships: string;
+  isFavourited: boolean;
 };

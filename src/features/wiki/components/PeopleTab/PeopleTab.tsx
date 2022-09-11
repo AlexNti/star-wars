@@ -26,12 +26,14 @@ const PeopleTab = () => {
       ></Alert>
     );
   }
+
   return (
     <Table
+      showFavourites
       data={people || []}
       tableKeys={tableKeys}
       handleSelection={handleSelectPerson}
-    ></Table>
+    />
   );
 };
 

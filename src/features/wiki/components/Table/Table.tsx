@@ -1,16 +1,20 @@
 import React from "react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
-//TODO ADD HOVER
-type TableProps<T extends { id: string; [key: string]: any }> = {
+import { Favourite } from "src/features/wiki/components";
+import { People, Planets, Starships } from "src/features/wiki/types";
+
+type TableProps<T extends People | Starships | Planets> = {
   data: T[];
   handleSelection: (id: string) => void;
   tableKeys: string[];
+  showFavourites?: boolean;
 };
 
-const WikiTable = <T extends { id: string; [key: string]: any }>({
+const WikiTable = <T extends People | Starships | Planets>({
   data,
   handleSelection,
   tableKeys,
+  showFavourites = false,
 }: TableProps<T>): JSX.Element => {
   return (
     <Table size="md">
@@ -21,6 +25,7 @@ const WikiTable = <T extends { id: string; [key: string]: any }>({
               {key}
             </Th>
           ))}
+          {showFavourites && <Th color="gray.400">Favourite</Th>}
         </Tr>
       </Thead>
       <Tbody>
@@ -31,8 +36,18 @@ const WikiTable = <T extends { id: string; [key: string]: any }>({
             key={currentData.id}
           >
             {tableKeys.map((key) => {
-              return <Td key={key}>{currentData[key]}</Td>;
+              return (
+                <Td width="100%" key={key}>
+                  {/*// @ts-ignore */}
+                  {currentData[key]}
+                </Td>
+              );
             })}
+            {showFavourites && (
+              <Td>
+                <Favourite favourite={currentData} />
+              </Td>
+            )}
           </Tr>
         ))}
       </Tbody>

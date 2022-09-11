@@ -4,6 +4,8 @@ import {
   PlanetsTab,
 } from "src/features/wiki/components";
 
+import { FavouritesTab } from "src/features/favourites/components";
+
 export type WikiTabs = {
   [key: string]: {
     to: string;
@@ -38,6 +40,14 @@ export const wikiTabs = (): WikiTabs => ({
     id: "Planets",
     Component: PlanetsTab,
     index: 2,
+    enabled: true,
+  },
+  favourites: {
+    to: "favourites",
+    label: "Favourites",
+    id: "Favourites",
+    Component: FavouritesTab,
+    index: 3,
     enabled: true,
   },
 });
