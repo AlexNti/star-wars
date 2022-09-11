@@ -16,7 +16,7 @@ export const useGetProfilePerson = ({
 export const useGetProfilePlanet = ({
   id,
 }: GetProfileParams): UseQueryResult<Planets> =>
-  useQuery([QUERY_KEYS.PLANET, id], () => profileApi.getProfilePerson({ id }));
+  useQuery([QUERY_KEYS.PLANET, id], () => profileApi.getProfilePlanet({ id }));
 
 export const useGetProfileStarship = ({
   id,
