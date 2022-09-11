@@ -12,7 +12,6 @@ import {
 
 import { useProfilePerson } from "src/features/profile/hooks";
 import { get } from "src/utils/get";
-import { PeopleTab } from "src/features/wiki/components";
 
 const makePersonProfileMapper = (): Record<
   string,
