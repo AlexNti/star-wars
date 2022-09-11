@@ -9,6 +9,10 @@ type Action<T, P = never> = {
   payload: P;
 };
 
+export enum Types {
+  ADD_FAVOURITE_CHARACTER = "ADD_FAVOURITE_CHARACTER",
+  REMOVE_FAVOURITE_CHARACTER = "REMOVE_FAVOURITE_CHARACTER",
+}
 type addFavouriteCharacter = Action<"ADD_FAVOURITE_CHARACTER", { id: string }>;
 
 type removeFavouriteCharacter = Action<
@@ -40,9 +44,13 @@ function reducer(state: State, action: Actions) {
 export const FavouritesContext = React.createContext<{
   state: State;
   dispatch: React.Dispatch<any>;
+  addToFavourites: (id: string) => void;
+  removeFromFavourites: (id: string) => void;
 }>({
   state: { favourites: {} },
   dispatch: (action: Actions) => null,
+  addToFavourites: (id) => null,
+  removeFromFavourites: (id) => null,
 });
 
 export const FavouritesContextProvider = ({
@@ -54,9 +62,21 @@ export const FavouritesContextProvider = ({
     reducer,
     { favourites: {} }
   );
+
+  const addToFavourites = React.useCallback((id: string) => {
+    dispatch({
+      type: Types.ADD_FAVOURITE_CHARACTER,
+      payload: { id },
+    });
+  }, []);
+
+  const removeFromFavourites = React.useCallback((id: string) => {
+    dispatch({ type: Types.REMOVE_FAVOURITE_CHARACTER, payload: { id } });
+  }, []);
+
   const contextValue = React.useMemo(
-    () => ({ state, dispatch }),
-    [state, dispatch]
+    () => ({ state, dispatch, removeFromFavourites, addToFavourites }),
+    [state, dispatch, addToFavourites, removeFromFavourites]
   );
 
   return (

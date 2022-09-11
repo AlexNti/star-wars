@@ -1,24 +1,23 @@
 import React from "react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
-import { StarIcon } from "@chakra-ui/icons";
+import { Favourite } from "src/features/wiki/components";
 
-import { IconButton } from "@chakra-ui/react";
-
-const TableCell = () => {};
-
-//TODO ADD HOVER
 type TableProps<T extends { id: string; [key: string]: any }> = {
   data: T[];
   handleSelection: (id: string) => void;
   tableKeys: string[];
-  showFavourite?: boolean;
+  favourites?: Record<string, string>;
+  handleAddFavourites?: (id: string) => void;
+  hanldeRemoveFavourites?: (id: string) => void;
 };
 
 const WikiTable = <T extends { id: string; [key: string]: any }>({
   data,
   handleSelection,
   tableKeys,
-  showFavourite = false,
+  favourites,
+  handleAddFavourites,
+  hanldeRemoveFavourites,
 }: TableProps<T>): JSX.Element => {
   return (
     <Table size="md">
@@ -29,7 +28,7 @@ const WikiTable = <T extends { id: string; [key: string]: any }>({
               {key}
             </Th>
           ))}
-          {showFavourite && <Th color="gray.400">Favourite</Th>}
+          {favourites && <Th color="gray.400">Favourite</Th>}
         </Tr>
       </Thead>
       <Tbody>
@@ -46,16 +45,15 @@ const WikiTable = <T extends { id: string; [key: string]: any }>({
                 </Td>
               );
             })}
-            {showFavourite && (
+            {favourites && handleAddFavourites && hanldeRemoveFavourites && (
               <Td>
-                <IconButton
-                  size="sm"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                  color={currentData.isFavourited ? "green.500" : "gray.600"}
-                  aria-label="Search database"
-                  icon={<StarIcon />}
+                <Favourite
+                  handleFavourite={() =>
+                    favourites[currentData.id] !== undefined
+                      ? hanldeRemoveFavourites(currentData.id)
+                      : handleAddFavourites(currentData.id)
+                  }
+                  isFavourited={favourites[currentData.id] !== undefined}
                 />
               </Td>
             )}

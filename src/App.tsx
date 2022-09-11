@@ -7,6 +7,8 @@ import { ColorModeSwitcher } from "src/ColorModeSwitcher";
 
 import { ErrorBoundary } from "src/components";
 
+import { FavouritesContextProvider } from "src/providers";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -22,7 +24,9 @@ export const App = (): JSX.Element => {
         <QueryClientProvider client={queryClient}>
           <ColorModeSwitcher />
           <BrowserRouter>
-            <Routes></Routes>
+            <FavouritesContextProvider>
+              <Routes></Routes>
+            </FavouritesContextProvider>
           </BrowserRouter>
         </QueryClientProvider>
       </ChakraProvider>

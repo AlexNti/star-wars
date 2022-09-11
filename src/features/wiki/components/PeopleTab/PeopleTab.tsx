@@ -5,11 +5,15 @@ import { Table } from "src/features/wiki/components";
 
 import { useWikiPeople } from "src/features/wiki/hooks";
 
+import { useFavouriteContext } from "src/hooks";
+
 const tableKeys = ["name"];
 
 const PeopleTab = () => {
   const { people, isLoading, peopleError, handleSelectPerson } =
     useWikiPeople();
+  const { state, addToFavourites, removeFromFavourites } =
+    useFavouriteContext();
 
   if (isLoading)
     return (
@@ -26,13 +30,16 @@ const PeopleTab = () => {
       ></Alert>
     );
   }
+
   return (
     <Table
-      showFavourite
       data={people || []}
       tableKeys={tableKeys}
       handleSelection={handleSelectPerson}
-    ></Table>
+      favourites={state.favourites}
+      handleAddFavourites={addToFavourites}
+      hanldeRemoveFavourites={removeFromFavourites}
+    />
   );
 };
 
