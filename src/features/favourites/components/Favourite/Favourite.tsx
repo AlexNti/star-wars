@@ -2,23 +2,27 @@ import React from "react";
 import { IconButton } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 
-type FavouriteProps = { isFavourited: boolean; handleFavourite: () => void };
+import { useFavouriteContext } from "src/features/favourites/hooks";
 
-const Favourite = ({
-  isFavourited,
-  handleFavourite,
-}: FavouriteProps): JSX.Element => {
-  const handleClick = React.useCallback(
+type FavouriteProps = { id: string };
+
+const Favourite = ({ id }: FavouriteProps): JSX.Element => {
+  const { state, addToFavourites, removeFromFavourites } =
+    useFavouriteContext();
+
+  const isFavourited = state.favourites[id] !== undefined;
+
+  const handleOnClick = React.useCallback(
     (e: React.MouseEvent<HTMLElement>) => {
       e.stopPropagation();
-      handleFavourite();
+      isFavourited ? removeFromFavourites(id) : addToFavourites(id);
     },
-    [handleFavourite]
+    [id, isFavourited, addToFavourites, removeFromFavourites]
   );
   return (
     <IconButton
       size="sm"
-      onClick={handleClick}
+      onClick={handleOnClick}
       color={isFavourited ? "green.500" : "gray.600"}
       aria-label="Search database"
       icon={<StarIcon />}

@@ -6,18 +6,14 @@ type TableProps<T extends { id: string; [key: string]: any }> = {
   data: T[];
   handleSelection: (id: string) => void;
   tableKeys: string[];
-  favourites?: Record<string, string>;
-  handleAddFavourites?: (id: string) => void;
-  hanldeRemoveFavourites?: (id: string) => void;
+  showFavourites?: boolean;
 };
 
 const WikiTable = <T extends { id: string; [key: string]: any }>({
   data,
   handleSelection,
   tableKeys,
-  favourites,
-  handleAddFavourites,
-  hanldeRemoveFavourites,
+  showFavourites = false,
 }: TableProps<T>): JSX.Element => {
   return (
     <Table size="md">
@@ -28,7 +24,7 @@ const WikiTable = <T extends { id: string; [key: string]: any }>({
               {key}
             </Th>
           ))}
-          {favourites && <Th color="gray.400">Favourite</Th>}
+          {showFavourites && <Th color="gray.400">Favourite</Th>}
         </Tr>
       </Thead>
       <Tbody>
@@ -45,16 +41,9 @@ const WikiTable = <T extends { id: string; [key: string]: any }>({
                 </Td>
               );
             })}
-            {favourites && handleAddFavourites && hanldeRemoveFavourites && (
+            {showFavourites && (
               <Td>
-                <Favourite
-                  handleFavourite={() =>
-                    favourites[currentData.id] !== undefined
-                      ? hanldeRemoveFavourites(currentData.id)
-                      : handleAddFavourites(currentData.id)
-                  }
-                  isFavourited={favourites[currentData.id] !== undefined}
-                />
+                <Favourite id={currentData.id} />
               </Td>
             )}
           </Tr>
