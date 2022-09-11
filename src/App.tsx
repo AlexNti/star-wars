@@ -7,7 +7,7 @@ import { ColorModeSwitcher } from "src/ColorModeSwitcher";
 
 import { ErrorBoundary } from "src/components";
 
-import { FavouritesContextProvider } from "src/providers";
+import { FavouritesContextProvider } from "src/features/favourites/services";
 
 const queryClient = new QueryClient({
   defaultOptions: {

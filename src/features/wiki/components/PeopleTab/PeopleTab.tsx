@@ -5,7 +5,7 @@ import { Table } from "src/features/wiki/components";
 
 import { useWikiPeople } from "src/features/wiki/hooks";
 
-import { useFavouriteContext } from "src/hooks";
+import { useFavouriteContext } from "src/features/favourites/hooks";
 
 const tableKeys = ["name"];
 
