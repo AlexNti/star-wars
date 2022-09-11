@@ -23,10 +23,12 @@ export const CardItem = ({
   title,
   value,
   children,
+  underLine,
 }: {
   title?: string;
   value?: string;
   children?: React.ReactNode;
+  underLine?: boolean;
 }): JSX.Element => {
   return (
     <Flex
@@ -42,7 +44,12 @@ export const CardItem = ({
           <Text color="gray.300" fontSize="sm">
             {title}
           </Text>
-          <Text fontWeight="bold" color="gray.100" fontSize="md">
+          <Text
+            textDecor={underLine ? "underline" : "initial"}
+            fontWeight="bold"
+            color="gray.100"
+            fontSize="md"
+          >
             {value}
           </Text>
         </>

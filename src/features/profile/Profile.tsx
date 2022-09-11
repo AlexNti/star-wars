@@ -5,6 +5,7 @@ import { NotFound404 } from "src/components";
 import {
   PeopleProfile,
   StarshipProfile,
+  PlanetProfile,
 } from "src/features/profile/components";
 
 import { PROFILES } from "src/features/profile/types";
@@ -14,6 +15,7 @@ const Profile = (): JSX.Element => {
 
   if (itemId === PROFILES.STARSHIPS) return <StarshipProfile />;
   if (itemId === PROFILES.PEOPLE) return <PeopleProfile />;
+  if (itemId === PROFILES.PLANETs) return <PlanetProfile />;
 
   return <NotFound404 />;
 };

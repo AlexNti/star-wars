@@ -57,7 +57,7 @@ const StarshipCardItem = ({ starships }: { starships: string[] }) => {
           {starshipData.map((starship) => {
             return (
               <Link key={starship.id} to={`/wiki/starships/${starship.id}`}>
-                <CardItem value={starship.name}></CardItem>
+                <CardItem underLine value={starship.name}></CardItem>
               </Link>
             );
           })}
