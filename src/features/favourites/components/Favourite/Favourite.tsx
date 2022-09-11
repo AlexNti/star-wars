@@ -22,7 +22,6 @@ const Favourite = ({ favourite }: FavouriteProps): JSX.Element => {
     },
     [isFavourited, addToFavourites, removeFromFavourites, favourite]
   );
-  console.log(state);
   return (
     <IconButton
       size="sm"
