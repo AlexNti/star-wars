@@ -7,3 +7,4 @@ Thisngs to improve
 - Better naming for WIKI and WikiPage the naming might lead to confusion
 - Build a mechanism for the profile to first check the QUERIES get all result
 - We can try to generalize the errors and loading states.
+- keep the state of accordion when navigating fron and back in the page.
