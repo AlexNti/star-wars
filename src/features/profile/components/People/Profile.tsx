@@ -9,7 +9,7 @@ import { Card, CardItem } from "src/features/profile/components";
 import { useProfilePerson } from "src/features/profile/hooks";
 import { get } from "src/utils/get";
 
-import { makePersonProfileMapper } from "src/features/profile/constants";
+import { makeProfileMapper } from "src/features/profile/constants";
 
 const PeopleProfile = (): JSX.Element => {
   const { itemId = "", profileId = "" } = useParams();
@@ -17,7 +17,7 @@ const PeopleProfile = (): JSX.Element => {
     id: profileId,
   });
 
-  const { bio } = makePersonProfileMapper()[itemId];
+  const { bio } = makeProfileMapper()[itemId];
   const biokeys = Object.keys(bio);
 
   if (isLoading)

@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, Text, Box } from "@chakra-ui/react";
 
-export const CardTile = ({ title }: { title: string }): JSX.Element => {
+export const CardTitle = ({ title }: { title: string }): JSX.Element => {
   return (
     <Flex
       p={1}
@@ -53,14 +53,16 @@ export const CardItem = ({
 
 export const Card = ({
   children,
+  cardTitle = "Biography",
 }: {
   children: React.ReactNode;
+  cardTitle?: string;
 }): JSX.Element => {
   return (
     <Flex w={500} flexDirection="column">
       <Flex borderRadius={10} bg="gray.700" flexDirection="column" width="100%">
         <Flex width="100%">
-          <CardTile title="Biography" />
+          <CardTitle title={cardTitle} />
         </Flex>
         <Flex p={2} flexDirection="column" width="100%">
           {children}

@@ -1,5 +1,5 @@
 import { StarshipCardItem } from "src/features/profile/components";
-export const makePersonProfileMapper = (): Record<
+export const makeProfileMapper = (): Record<
   string,
   {
     bio: Record<
@@ -22,6 +22,18 @@ export const makePersonProfileMapper = (): Record<
       height: { navigateTo: "" },
       hair_color: { navigateTo: "", title: "hair color" },
       gender: { navigateTo: "" },
+    },
+  },
+  starships: {
+    bio: {
+      name: { navigateTo: "" },
+      model: { navigateTo: "" },
+      manufacturer: { navigateTo: "" },
+      cost_in_credits: { navigateTo: "", title: "cost" },
+      max_atmosphering_speed: { navigateTo: "", title: "max speed" },
+      passengers: { navigateTo: "" },
+      consumables: { navigateTo: "", title: "hair color" },
+      cargo_capacity: { navigateTo: "", title: "Cargo capacity" },
     },
   },
 });
