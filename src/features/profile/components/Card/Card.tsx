@@ -19,20 +19,43 @@ export const CardTile = ({ title }: { title: string }): JSX.Element => {
   );
 };
 
-export const CardItem = (): JSX.Element => {
+export const CardItem = ({
+  title,
+  value,
+  children,
+}: {
+  title?: string;
+  value?: string;
+  children?: React.ReactNode;
+}): JSX.Element => {
   return (
     <Flex
-      width="100"
-      p={1}
+      pt={1}
+      pb={1}
+      width="100%"
       _notLast={{ borderBottom: "1px", borderColor: "gray.400" }}
-      flexDirection="row"
+      justifyContent="space-between"
     >
-      <Text> Here is item</Text>
+      {children && children}
+      {!children && (
+        <>
+          <Text color="gray.300" fontSize="sm">
+            {title}
+          </Text>
+          <Text fontWeight="bold" color="gray.100" fontSize="md">
+            {value}
+          </Text>
+        </>
+      )}
     </Flex>
   );
 };
 
-export const Card = (): JSX.Element => {
+export const Card = ({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element => {
   return (
     <Flex w={500} flexDirection="column">
       <Flex borderRadius={10} bg="gray.700" flexDirection="column" width="100%">
@@ -40,11 +63,7 @@ export const Card = (): JSX.Element => {
           <CardTile title="Biography" />
         </Flex>
         <Flex p={2} flexDirection="column" width="100%">
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
+          {children}
         </Flex>
       </Flex>
     </Flex>

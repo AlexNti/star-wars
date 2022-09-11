@@ -1,0 +1,5 @@
+export enum QUERY_KEYS {
+  PERSON = "PERSON",
+  PLANET = "PLANET",
+  STARSHIP = "STARSHIP",
+}

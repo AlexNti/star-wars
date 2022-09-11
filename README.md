@@ -5,3 +5,5 @@ Thisngs to improve
 - Try to see if we abstract the useWikiPeople,useWikiPlanets and useWikiStarships in a single function.
 - Improve resposiveness of the app UI
 - Better naming for WIKI and WikiPage the naming might lead to confusion
+- Build a mechanism for the profile to first check the QUERIES get all result
+- We can try to generalize the errors and loading states.
