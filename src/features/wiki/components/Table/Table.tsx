@@ -26,6 +26,7 @@ const WikiTable = <T extends { id: string; [key: string]: any }>({
       <Tbody>
         {data.map((currentData) => (
           <Tr
+            _hover={{ cursor: "pointer" }}
             onClick={() => handleSelection(currentData.id)}
             key={currentData.id}
           >

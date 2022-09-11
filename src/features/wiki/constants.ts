@@ -30,7 +30,7 @@ export const wikiTabs = (): WikiTabs => ({
     id: "starships",
     Component: StarshipTab,
     index: 1,
-    enabled: false,
+    enabled: true,
   },
   planets: {
     to: "planets",
@@ -38,6 +38,6 @@ export const wikiTabs = (): WikiTabs => ({
     id: "Planets",
     Component: PlanetsTab,
     index: 2,
-    enabled: false,
+    enabled: true,
   },
 });
