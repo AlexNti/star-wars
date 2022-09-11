@@ -20,18 +20,6 @@ const useProfileStarship = ({
     error: starshipError,
   } = useGetProfileStarship({ id });
 
-  /**
-   * Clear the session storage when we are refreshing the browser.
-   */
-  React.useEffect(() => {
-    window.onbeforeunload = () => {
-      storage.session.clear();
-    };
-    return () => {
-      window.onbeforeunload = null;
-    };
-  }, []);
-
   return {
     isLoading,
     starship,
