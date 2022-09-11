@@ -10,7 +10,7 @@ const useFavourites = (): useFavouritesReturn => {
 
   const handleSelection = React.useCallback(
     (personId: string) => {
-      navigate(`${personId}`);
+      navigate(`/wiki/people/${personId}`);
     },
     [navigate]
   );
