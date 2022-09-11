@@ -1,6 +1,4 @@
-import React from "react";
 import { Starships } from "src/features/wiki/types";
-import storage from "src/utils/storage";
 import { useGetProfileStarship } from "../services";
 
 export type useProfileStarshipReturn = {

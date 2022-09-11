@@ -1,6 +1,4 @@
-import React from "react";
 import { Planets } from "src/features/wiki/types";
-import storage from "src/utils/storage";
 import { useGetProfilePlanet } from "../services";
 
 export type useProfilePlanetReturn = {

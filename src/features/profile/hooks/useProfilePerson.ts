@@ -1,6 +1,4 @@
-import React from "react";
 import { People } from "src/features/wiki/types";
-import storage from "src/utils/storage";
 import { useGetProfilePerson } from "../services";
 
 export type useProfilePeopleReturn = {
