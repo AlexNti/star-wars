@@ -56,7 +56,7 @@ const StarshipCardItem = ({ starships }: { starships: string[] }) => {
         <AccordionPanel pb={4}>
           {starshipData.map((starship) => {
             return (
-              <Link key={starship.id} to={`/starships/${starship.id}`}>
+              <Link key={starship.id} to={`/wiki/starships/${starship.id}`}>
                 <CardItem value={starship.name}></CardItem>
               </Link>
             );

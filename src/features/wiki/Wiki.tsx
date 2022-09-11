@@ -10,7 +10,10 @@ import { useParams } from "react-router-dom";
 
 const getActiveTab = (tabs: WikiTabs, currentTabId: string): number => {
   if (!currentTabId) return 0;
-  const currentActiveTabIndex = tabs[currentTabId].index;
+  console.log();
+  const currentActiveTabIndex = !tabs[currentTabId]
+    ? 0
+    : tabs[currentTabId]?.index;
 
   return currentActiveTabIndex || 0;
 };
@@ -21,10 +24,12 @@ const Wiki = () => {
 
   const keyTabs = Object.keys(tabs);
 
+  const currentTab = getActiveTab(tabs, itemId);
+
   return (
     <Flex flexDirection="column">
       <Box pl={2}>
-        <Tabs index={getActiveTab(tabs, itemId)}>
+        <Tabs index={currentTab}>
           <TabList>
             {keyTabs.map((keyTab) => {
               const { id, to, label, enabled } = tabs[keyTab];

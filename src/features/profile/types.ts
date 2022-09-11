@@ -3,3 +3,9 @@ export enum QUERY_KEYS {
   PLANET = "PLANET",
   STARSHIP = "STARSHIP",
 }
+
+export enum PROFILES {
+  STARSHIPS = "starships",
+  PEOPLE = "people",
+  PLANETs = "planets",
+}
