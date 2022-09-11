@@ -1,15 +1,16 @@
 import React from "react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { Favourite } from "src/features/wiki/components";
+import { People, Planets, Starships } from "src/features/wiki/types";
 
-type TableProps<T extends { id: string; [key: string]: any }> = {
+type TableProps<T extends People | Starships | Planets> = {
   data: T[];
   handleSelection: (id: string) => void;
   tableKeys: string[];
   showFavourites?: boolean;
 };
 
-const WikiTable = <T extends { id: string; [key: string]: any }>({
+const WikiTable = <T extends People | Starships | Planets>({
   data,
   handleSelection,
   tableKeys,
@@ -37,13 +38,14 @@ const WikiTable = <T extends { id: string; [key: string]: any }>({
             {tableKeys.map((key) => {
               return (
                 <Td width="100%" key={key}>
+                  {/*// @ts-ignore */}
                   {currentData[key]}
                 </Td>
               );
             })}
             {showFavourites && (
               <Td>
-                <Favourite id={currentData.id} />
+                <Favourite favourite={currentData} />
               </Td>
             )}
           </Tr>

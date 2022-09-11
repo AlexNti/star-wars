@@ -1,7 +1,8 @@
 import React from "react";
+import { People, Planets, Starships } from "src/features/wiki/types";
 
 export type State = {
-  favourites: Record<string, string>;
+  favourites: Record<string, People | Starships | Planets>;
 };
 
 type Action<T, P = never> = {
@@ -13,7 +14,10 @@ export enum Types {
   ADD_FAVOURITE_CHARACTER = "ADD_FAVOURITE_CHARACTER",
   REMOVE_FAVOURITE_CHARACTER = "REMOVE_FAVOURITE_CHARACTER",
 }
-type addFavouriteCharacter = Action<"ADD_FAVOURITE_CHARACTER", { id: string }>;
+type addFavouriteCharacter = Action<
+  "ADD_FAVOURITE_CHARACTER",
+  { favourite: People | Starships | Planets }
+>;
 
 type removeFavouriteCharacter = Action<
   "REMOVE_FAVOURITE_CHARACTER",
@@ -29,7 +33,7 @@ function reducer(state: State, action: Actions) {
         ...state,
         favourites: {
           ...state.favourites,
-          [action.payload.id]: action.payload.id,
+          [action.payload.favourite.id]: action.payload.favourite,
         },
       };
     case "REMOVE_FAVOURITE_CHARACTER":
@@ -44,7 +48,7 @@ function reducer(state: State, action: Actions) {
 export const FavouritesContext = React.createContext<{
   state: State;
   dispatch: React.Dispatch<any>;
-  addToFavourites: (id: string) => void;
+  addToFavourites: (id: People | Starships | Planets) => void;
   removeFromFavourites: (id: string) => void;
 }>({
   state: { favourites: {} },
@@ -63,12 +67,15 @@ export const FavouritesContextProvider = ({
     { favourites: {} }
   );
 
-  const addToFavourites = React.useCallback((id: string) => {
-    dispatch({
-      type: Types.ADD_FAVOURITE_CHARACTER,
-      payload: { id },
-    });
-  }, []);
+  const addToFavourites = React.useCallback(
+    (favourite: People | Starships | Planets) => {
+      dispatch({
+        type: Types.ADD_FAVOURITE_CHARACTER,
+        payload: { favourite },
+      });
+    },
+    []
+  );
 
   const removeFromFavourites = React.useCallback((id: string) => {
     dispatch({ type: Types.REMOVE_FAVOURITE_CHARACTER, payload: { id } });
