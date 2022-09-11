@@ -21,7 +21,7 @@ const StarsipTab = () => {
   if (starshipsError) {
     return (
       <Alert
-        title="Error At fetching Coins Market"
+        title="Error At fetching Planets"
         description="An error occured while fetching alert"
       ></Alert>
     );

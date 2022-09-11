@@ -20,7 +20,7 @@ const PlanetsTab = () => {
   if (planetsError) {
     return (
       <Alert
-        title="Error At fetching Coins Market"
+        title="Error At fetching Planets"
         description="An error occured while fetching alert"
       ></Alert>
     );

@@ -30,7 +30,7 @@ const PeopleProfile = (): JSX.Element => {
   if (personError) {
     return (
       <Alert
-        title="Error At fetching Coins Market"
+        title="Error At fetching People profile"
         description="An error occured while fetching alert"
       ></Alert>
     );

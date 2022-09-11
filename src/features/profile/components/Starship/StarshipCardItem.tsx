@@ -35,7 +35,7 @@ const StarshipCardItem = ({ starships }: { starships: string[] }) => {
   if (strashipResponse.some(({ error }) => error)) {
     return (
       <Alert
-        title="Error At fetching Coins Market"
+        title="Error At fetching Starships"
         description="An error occured while fetching alert"
       ></Alert>
     );

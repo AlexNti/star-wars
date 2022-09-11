@@ -21,7 +21,7 @@ const PeopleTab = () => {
   if (peopleError) {
     return (
       <Alert
-        title="Error At fetching Coins Market"
+        title="Error At fetching Characters"
         description="An error occured while fetching alert"
       ></Alert>
     );
