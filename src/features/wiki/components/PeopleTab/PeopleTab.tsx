@@ -28,6 +28,7 @@ const PeopleTab = () => {
   }
   return (
     <Table
+      showFavourite
       data={people || []}
       tableKeys={tableKeys}
       handleSelection={handleSelectPerson}
