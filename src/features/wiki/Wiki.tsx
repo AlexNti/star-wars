@@ -35,8 +35,10 @@ const Wiki = () => {
               const { id, to, label, enabled } = tabs[keyTab];
               if (!enabled) return null;
               return (
-                <Tab key={id}>
-                  <Link to={to}>{label}</Link>
+                <Tab p={0} key={id}>
+                  <Box padding={"20px"} to={to} as={Link}>
+                    {label}
+                  </Box>
                 </Tab>
               );
             })}
